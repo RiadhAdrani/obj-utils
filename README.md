@@ -2,4 +2,4 @@
 
 Javascript object utilities.
 
-Check documentation [`here`](https://riadhadrani.github.io/utility-js/object.html)
+Check documentation [`here`](https://riadhadrani.github.io/utils/object.html)
