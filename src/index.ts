@@ -50,7 +50,7 @@ export const isSymbol = (o: unknown): o is symbol => typeof o === 'symbol';
  * checks if the object is a function
  * @param o object
  */
-export const isFunction = <A extends Array<unknown>,R = unknown>(o: unknown): o is ((...args:A) => R) => typeof o === 'function';
+export const isFunction = <F = () => void>(o: unknown): o is F => typeof o === 'function';
 
 /**
  * checks if the object is falsy
@@ -64,7 +64,9 @@ export const isFalsy = (o: unknown): o is false | 0 | '' | null | undefined | ty
  * @param o
  * @returns
  */
-export const isPrimitive = (o: unknown): o is string | number | bigint | boolean | undefined | symbol | null =>
+export const isPrimitive = (
+  o: unknown
+): o is string | number | bigint | boolean | undefined | symbol | null =>
   ['string', 'number', 'bigint', 'boolean', 'undefined', 'symbol', 'null'].includes(typeof o);
 
 /**
@@ -78,7 +80,10 @@ const isString = (o: unknown): o is string => typeof o === 'string';
  * @param o object
  * @param property object's key
  */
-export const hasProperty = <V = unknown,K extends string | number | symbol= string>(o: unknown, property: K): o is {[P in K]:V} => {
+export const hasProperty = <V = unknown, K extends string | number | symbol = string>(
+  o: unknown,
+  property: K
+): o is { [P in K]: V } => {
   if (isPrimitive(o)) return false;
 
   if (isNull(o)) return false;
@@ -196,7 +201,7 @@ export const forEachKey = <T extends object>(
   callback: (key: keyof T, value: T[keyof T], index: number) => void,
   object: T
 ): void => {
-  if (!isFunction(callback)) {
+  if (!isFunction<(key: keyof T, value: T[keyof T], index: number) => void>(callback)) {
     throw `Expected a function for (callback) but found (${typeof object}).`;
   }
 

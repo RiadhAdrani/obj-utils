@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Changed
+
+- improved typing.
+- readme documentation.
+
+### Removed
+
+- dropped `cjs` support.
+
 ## 1.0.3 - 2023-10-10
 
 ### Removed
