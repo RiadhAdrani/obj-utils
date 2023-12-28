@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/RiadhAdrani/obj-utils"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
