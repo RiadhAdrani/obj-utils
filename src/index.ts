@@ -2,61 +2,61 @@
  * checks if the object is a number
  * @param o object
  */
-export const isNumber = (o: unknown): boolean => typeof o === 'number';
+export const isNumber = (o: unknown): o is number => typeof o === 'number';
 
 /**
  * checks if the object is an array
  * @param o object
  */
-export const isArray = (o: unknown): boolean => Array.isArray(o);
+export const isArray = <T = unknown>(o: unknown): o is Array<T> => Array.isArray(o);
 
 /**
  * checks if the object is an object
  * @param o object
  */
-export const isObject = (o: unknown): boolean => typeof o === 'object';
+export const isObject = (o: unknown): o is object => typeof o === 'object';
 
 /**
  * checks if the object is null
  * @param o object
  */
-export const isNull = (o: unknown): boolean => o === null;
+export const isNull = (o: unknown): o is null => o === null;
 
 /**
  * checks if the object is undefined
  * @param o object
  */
-export const isUndefined = (o: unknown): boolean => o === undefined;
+export const isUndefined = (o: unknown): o is undefined => o === undefined;
 
 /**
  * checks if the object is a boolean
  * @param o object
  */
-export const isBoolean = (o: unknown): boolean => typeof o === 'boolean';
+export const isBoolean = (o: unknown): o is boolean => typeof o === 'boolean';
 
 /**
  * checks if the object is a bigint
  * @param o object
  */
-export const isBigint = (o: unknown): boolean => typeof o === 'bigint';
+export const isBigint = (o: unknown): o is bigint => typeof o === 'bigint';
 
 /**
  * checks if the object is a bigint
  * @param o object
  */
-export const isSymbol = (o: unknown): boolean => typeof o === 'symbol';
+export const isSymbol = (o: unknown): o is symbol => typeof o === 'symbol';
 
 /**
  * checks if the object is a function
  * @param o object
  */
-export const isFunction = (o: unknown): boolean => typeof o === 'function';
+export const isFunction = <A extends Array<unknown>,R = unknown>(o: unknown): o is ((...args:A) => R) => typeof o === 'function';
 
 /**
  * checks if the object is falsy
  * @param o object
  */
-export const isFalsy = (o: unknown): boolean =>
+export const isFalsy = (o: unknown): o is false | 0 | '' | null | undefined | typeof NaN =>
   [false, 0, -0, '', null, undefined, NaN].includes(o as boolean);
 
 /**
@@ -64,21 +64,21 @@ export const isFalsy = (o: unknown): boolean =>
  * @param o
  * @returns
  */
-export const isPrimitive = (o: unknown): boolean =>
+export const isPrimitive = (o: unknown): o is string | number | bigint | boolean | undefined | symbol | null =>
   ['string', 'number', 'bigint', 'boolean', 'undefined', 'symbol', 'null'].includes(typeof o);
 
 /**
  * checks if the object is a string.
  * @param o object
  */
-const isString = (o: unknown): boolean => typeof o === 'string';
+const isString = (o: unknown): o is string => typeof o === 'string';
 
 /**
  * checks if the object have the given property
  * @param o object
  * @param property object's key
  */
-export const hasProperty = (o: unknown, property: string | number): boolean => {
+export const hasProperty = <V = unknown,K extends string | number | symbol= string>(o: unknown, property: K): o is {[P in K]:V} => {
   if (isPrimitive(o)) return false;
 
   if (isNull(o)) return false;
