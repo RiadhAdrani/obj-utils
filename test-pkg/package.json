@@ -1,0 +1,14 @@
+{
+  "name": "test-pkg",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test:esm": "node esm/index.js",
+    "test:cjs": "node cjs/index.cjs",
+    "test": "npm run test:esm && npm run test:cjs"
+  },
+  "dependencies": {
+    "@riadh-adrani/obj-utils": "file:.."
+  },
+  "type": "module"
+}

@@ -23,3 +23,5 @@ build
 *.njsproj
 *.sln
 *.sw?
+
+test-pkg/node_modules
