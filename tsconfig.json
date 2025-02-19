@@ -2,9 +2,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "useDefineForClassFields": true,
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "strict": true,
     "declaration": true,
     "resolveJsonModule": true,
@@ -18,11 +16,6 @@
     "moduleResolution": "bundler",
     "target": "ESNext"
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

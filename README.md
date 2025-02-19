@@ -94,7 +94,7 @@ checks if `o` is a primitive.
 
 ```ts
 function isPrimitive(
-  o: unknown
+  o: unknown,
 ): o is string | number | bigint | boolean | undefined | symbol | null;
 ```
 
@@ -105,7 +105,7 @@ checks if `o` is an object with the given property.
 ```ts
 function hasProperty<V = unknown, K extends string | number | symbol = string>(
   o: unknown,
-  property: K
+  property: K,
 ): o is { [P in K]: V };
 ```
 
@@ -145,7 +145,7 @@ execute a callback for each key in an object.
 ```ts
 function forEachKey<T extends object>(
   callback: (key: keyof T, value: T[keyof T], index: number) => void,
-  object: T
+  object: T,
 ): void;
 ```
 

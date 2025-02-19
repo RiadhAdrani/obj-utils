@@ -65,7 +65,7 @@ export const isFalsy = (o: unknown): o is false | 0 | '' | null | undefined | ty
  * @returns
  */
 export const isPrimitive = (
-  o: unknown
+  o: unknown,
 ): o is string | number | bigint | boolean | undefined | symbol | null =>
   ['string', 'number', 'bigint', 'boolean', 'undefined', 'symbol', 'null'].includes(typeof o);
 
@@ -82,7 +82,7 @@ const isString = (o: unknown): o is string => typeof o === 'string';
  */
 export const hasProperty = <V = unknown, K extends string | number | symbol = string>(
   o: unknown,
-  property: K
+  property: K,
 ): o is { [P in K]: V } => {
   if (isPrimitive(o)) return false;
 
@@ -199,7 +199,7 @@ export const copyKeys = <F extends object, T extends object>(
  */
 export const forEachKey = <T extends object>(
   callback: (key: keyof T, value: T[keyof T], index: number) => void,
-  object: T
+  object: T,
 ): void => {
   if (!isFunction<(key: keyof T, value: T[keyof T], index: number) => void>(callback)) {
     throw `Expected a function for (callback) but found (${typeof object}).`;
@@ -210,7 +210,7 @@ export const forEachKey = <T extends object>(
   }
 
   Object.keys(object).forEach((key, index) =>
-    callback(key as keyof T, object[key as keyof T], index)
+    callback(key as keyof T, object[key as keyof T], index),
   );
 };
 
@@ -275,7 +275,7 @@ export const merge = <S extends object, T extends object = S>(...objects: Array<
           } else {
             cast<Record<string, unknown>>(output)[i] = merge(
               (output as Record<string, Record<string, unknown>>)[i],
-              (object as Record<string, Record<string, unknown>>)[i]
+              (object as Record<string, Record<string, unknown>>)[i],
             );
           }
         }
@@ -296,7 +296,7 @@ export const merge = <S extends object, T extends object = S>(...objects: Array<
           } else {
             cast<Record<string, unknown>>(output)[key] = merge(
               (output as Record<string, Record<string, unknown>>)[key],
-              (object as Record<string, Record<string, unknown>>)[key]
+              (object as Record<string, Record<string, unknown>>)[key],
             );
           }
         }

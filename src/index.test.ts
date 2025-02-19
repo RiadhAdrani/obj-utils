@@ -441,13 +441,13 @@ describe('isFunction', () => {
     [[], false],
     [
       function () {
-        1;
+        return 1;
       },
       true,
     ],
     [
       () => {
-        1;
+        return 1;
       },
       true,
     ],
